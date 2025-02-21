@@ -1,13 +1,13 @@
 # TODO: Markov Model Text Analysis Project
 
 ## 1. Implement `fcm` Program
-- [ ] Create program structure (C/C++/Rust)
-- [ ] Implement text file input handling
-- [ ] Build frequency table for k-length contexts
+- [X] Create program structure (C/C++/Rust)
+- [X] Implement text file input handling
+- [X] Build frequency table for k-length contexts
 - [ ] Implement probability calculation with smoothing: P(e|c) = (N(e|c) + α) / (∑(N(s|c) + α|Σ|))
 - [ ] Calculate average information content: Hₙ = -(1/n) ∑ log₂P(xᵢ|c)
-- [ ] Implement command-line parameter handling (k, α)
-- [ ] Output theoretical information content in bits per symbol (bps)
+- [X] Implement command-line parameter handling (k, α)
+- [X] Output theoretical information content in bits per symbol (bps)
 - [ ] Add error handling and validation
 - [ ] Test with sample text files
 
@@ -35,12 +35,12 @@
 - [ ] Add source code for both programs
 - [ ] Include test text files
 - [ ] Create comprehensive README.md with:
-  - [ ] Project overview
-  - [ ] Installation instructions
-  - [ ] Dependency details
-  - [ ] Compilation steps
-  - [ ] Usage examples with sample commands
-  - [ ] Parameter explanations
+- [ ] Project overview
+- [ ] Installation instructions
+- [ ] Dependency details
+- [ ] Compilation steps
+- [ ] Usage examples with sample commands
+- [ ] Parameter explanations
 - [ ] Add final report (PDF format)
 - [ ] Include license information
 - [ ] Organize repository for clear navigation
