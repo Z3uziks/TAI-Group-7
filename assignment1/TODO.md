@@ -8,6 +8,7 @@
 - [ ] Calculate average information content: Hₙ = -(1/n) ∑ log₂P(xᵢ|c)
 - [X] Implement command-line parameter handling (k, α)
 - [X] Output theoretical information content in bits per symbol (bps)
+- [ ] Add output frequency table to file <!-- IMPORTANT -->
 - [ ] Add error handling and validation
 - [ ] Test with sample text files
 
@@ -17,6 +18,7 @@
 - [ ] Build probability tables based on frequency analysis
 - [ ] Handle starting context (prior) parameter
 - [ ] Implement text generation algorithm using learned probabilities
+- [ ] Change the alphabet from 26 to whatever number is used
 - [ ] Add command-line parameter handling (k, α, prior, sequence length)
 - [ ] Add error handling and validation
 - [ ] Test with various parameters and training texts
