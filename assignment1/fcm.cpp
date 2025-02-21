@@ -17,6 +17,17 @@ private:
     FiniteContextModel(int order, double smoothing) : k(order), alpha(smoothing) {}
     unordered_map<string, unordered_map<char, int>> frequency_table;
 
+    int getSigma(const string &text) {
+        vector<char> symbols;
+        for (char c : text) {
+            if (find(symbols.begin(), symbols.end(), c) == symbols.end()) {
+                symbols.push_back(c);
+            }
+        }
+
+        return symbols.size();
+    }
+
     void train(const string &text) {
         for (size_t i = 0; i + k < text.size(); ++i) {
             string context = text.substr(i, k);
@@ -28,21 +39,21 @@ private:
         cout << "Size: " << frequency_table.size() << endl;
     }
 
-    double probability(const string &context, char symbol) {
-        // if (context_counts.find(context) == context_counts.end())
-        //     return 1.0 / 256; // Uniform probability for unseen contexts
+    double probability(const string &context, char symbol, const int sigma) {
 
         int count_symbol = frequency_table[context][symbol] + alpha;
-        int count_context = context_counts[context] + alpha * 256;
+        int count_context = context_counts[context] + alpha * sigma;
         return static_cast<double>(count_symbol) / count_context;
     }
+    
 
     double compute_entropy(const string &text) {
         double entropy = 0.0;
+        const int sigma = getSigma(text);
         for (size_t i = 0; i + k < text.size(); ++i) {
             string context = text.substr(i, k);
             char next_symbol = text[i + k];
-            double prob = probability(context, next_symbol);
+            double prob = probability(context, next_symbol, sigma);
             entropy += log2(prob);
         }
         cout << "Entropy: " << entropy << endl;
@@ -59,11 +70,12 @@ string read_file(const string &filename) {
     }
 
     string line;
-    getline(file, line); // Skip the first line
+    // getline(file, line); // Skip the first line
 
     string content((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
     return content;
 }
+
 
 void print_frequencyTable(const unordered_map<string, unordered_map<char, int>> &frequency_table) {
     string result;
