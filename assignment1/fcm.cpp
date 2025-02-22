@@ -78,30 +78,55 @@ string read_file(const string &filename) {
 
 
 void print_frequencyTable(const unordered_map<string, unordered_map<char, int>> &frequency_table) {
-    string result;
-    
+    cout << "{\n";
     for (const auto &context : frequency_table) {
+        string mod_context = context.first;
         if (context.first.find('\n') != string::npos) {
-            string modified_context = context.first;
-            replace(modified_context.begin(), modified_context.end(), '\n', '\\');
-            result += modified_context + ": ";
-        } else {
-            result += context.first + ": ";
+            replace(mod_context.begin(), mod_context.end(), '\n', '\\');
         }
+        cout << "  \"" << mod_context << "\": {\n";
         for (const auto &symbol : context.second) {
-            if (symbol.first == '\n') {
-                result += "\\n";
-            } else {
-                result += symbol.first;
-            }
-            result += " ";
-            result += to_string(symbol.second);
-            result += ", ";
+            cout << "    \"" << (symbol.first == '\n' ? "\\n" : string(1, symbol.first)) << "\": " << symbol.second << ",\n";
         }
-        result += "\n";
+        cout << "  },\n";
     }
-    cout << result;
+    cout << "}\n";
 }
+
+void save_frequencyTable(const unordered_map<string, unordered_map<char, int>> &frequency_table) {
+    ofstream file("frequency_table.txt");
+    if (!file.is_open()) {
+        cerr << "Error opening file: frequency_table.txt" << endl;
+        exit(1);
+    }
+
+    for (const auto &context : frequency_table) {
+        string mod_context = context.first;
+        if (context.first.find('\n') != string::npos) {
+            size_t pos = 0;
+            while ((pos = mod_context.find('\n', pos)) != string::npos) {
+                mod_context.replace(pos, 1, "\\n");
+                pos += 2;
+            }
+        }
+        file << mod_context << ":";
+        bool first = true;
+        for (const auto &symbol : context.second) {
+            if (!first) {
+            file << ";";
+            }
+            if (symbol.first == '\n') {
+            file << "\\n;" << symbol.second;
+            } else {
+            file << symbol.first << ";" << symbol.second;
+            }
+            first = false;
+        }
+        file << "\n";
+        }
+        file.close();
+}
+
 
 int main(int argc, char *argv[]) {
     if (argc != 6) {
@@ -118,6 +143,7 @@ int main(int argc, char *argv[]) {
     FiniteContextModel fcm(k, alpha);
     fcm.train(text);
     print_frequencyTable(fcm.frequency_table);
+    save_frequencyTable(fcm.frequency_table);
     double entropy = fcm.compute_entropy(text);
     
     cout << "Average Information Content: " << entropy << " bps" << endl;
