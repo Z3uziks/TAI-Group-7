@@ -4,11 +4,11 @@
 - [X] Create program structure (C/C++/Rust)
 - [X] Implement text file input handling
 - [X] Build frequency table for k-length contexts
-- [ ] Implement probability calculation with smoothing: P(e|c) = (N(e|c) + α) / (∑(N(s|c) + α|Σ|))
-- [ ] Calculate average information content: Hₙ = -(1/n) ∑ log₂P(xᵢ|c)
+- [X] Implement probability calculation with smoothing: P(e|c) = (N(e|c) + α) / (∑(N(s|c) + α|Σ|))
+- [X] Calculate average information content: Hₙ = -(1/n) ∑ log₂P(xᵢ|c)
 - [X] Implement command-line parameter handling (k, α)
 - [X] Output theoretical information content in bits per symbol (bps)
-- [ ] Add output frequency table to file <!-- IMPORTANT -->
+- [X] Add output frequency table to file <!-- IMPORTANT -->
 - [ ] Add error handling and validation
 - [ ] Test with sample text files
 
