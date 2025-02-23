@@ -77,7 +77,7 @@ public:
             int context_count = context_counts[context];
 
             for (auto const& [str, frequency] : frequencies) {
-                double probability = (frequency + alpha) / (context_count + alpha * unique_chars); // change 26 to the size of the alphabet
+                double probability = (frequency + alpha) / (context_count + alpha * unique_chars); // ----- ASK TEACHER IF THIS IS CORRECT ------
                 probabilities.push_back(make_pair(str, probability));
             }
             probability_table[context] = probabilities;
@@ -108,12 +108,18 @@ public:
             });
     
             // Generate a random number and use it to select the next character or escape sequence
-            double random = (double) rand() / RAND_MAX;
+            
+            double sum_probabilities = 0;                                                           // ------------------- USED BECAUSE SUM OF PROBABILITIES IS NOT 1 -----------------------
+            for (const auto& [str, probability] : probabilities) { 
+                sum_probabilities += probability;
+            }
+            
+            double random = ((double) rand() / RAND_MAX) * sum_probabilities;
             double cumulative_probability = 0;
             string next_string;
-    
             for (auto const& [str, probability] : probabilities) {
                 cumulative_probability += probability;
+                // cout << "str: " << str << " random: " << random << " cumulative_probability: " << cumulative_probability << " probability: " << probability << endl;
                 if (random < cumulative_probability) {
                     next_string = str; // We now store the whole string (could be a char or "\\n")
                     break;
@@ -130,7 +136,11 @@ public:
             } else {
                 // Ensure that the context has at least `k` characters and update correctly
                 if (static_cast<int>(context.length()) >= k) {
-                    context = context.substr(1) + next_string;  // Shift the window and append the new string
+                    if (context[0] == '\\') {
+                        context = context.substr(2) + next_string;  // Shift the window by 2 ('\n' situation) and append the new string
+                    } else {
+                        context = context.substr(1) + next_string;  // Shift the window by 1 and append the new string
+                    }
                 } else {
                     context += next_string;  // If context is shorter than `k`, just append the new string
                 }
