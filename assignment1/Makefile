@@ -2,23 +2,29 @@
 CXX = g++
 
 # Compiler flags
-CXXFLAGS = -std=c++11 -Wall
+CXXFLAGS = -std=c++17 -Wall
 
 # Target executable
 TARGET = fcm
+GEN_TARGET = generator
 
 # Source files
 SRCS = fcm.cpp
+GEN_SRCS = generator.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)
+GEN_OBJS = $(GEN_SRCS:.cpp=.o)
 
 # Default target
-all: $(TARGET) clean_objs
+all: $(TARGET) $(GEN_TARGET) clean_objs
 
 # Link the target executable
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
+
+$(GEN_TARGET): $(GEN_OBJS)
+	$(CXX) $(CXXFLAGS) -o $(GEN_TARGET) $(GEN_OBJS)
 
 # Compile source files into object files
 %.o: %.cpp
@@ -26,10 +32,10 @@ $(TARGET): $(OBJS)
 
 # Clean up build files
 clean:
-	rm -f $(TARGET) $(OBJS)
+	rm -f $(TARGET) $(GEN_TARGET) $(OBJS)
 
 clean_objs:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(GEN_OBJS)
 
 # Run the program
 run: $(TARGET)
