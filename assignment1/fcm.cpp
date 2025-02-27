@@ -40,13 +40,13 @@ private:
     }
 
     double probability(const string &context, char symbol, const int sigma) {
-
+        
         int count_symbol = frequency_table[context][symbol] + alpha;
         int count_context = context_counts[context] + alpha * sigma;
         return static_cast<double>(count_symbol) / count_context;
     }
     
-
+    
     double compute_entropy(const string &text) {
         double entropy = 0.0;
         const int sigma = getSigma(text);
@@ -60,6 +60,26 @@ private:
         cout << "Text size: " << text.size() << endl;
         return -entropy / (text.size() - k);
     }
+
+    void save_model(const string &filename) {
+        ofstream file(filename);
+        if (!file.is_open()) {
+            cerr << "Error saving model to file: " << filename << endl;
+            return;
+        }
+        file << k << " " << alpha << "\n";
+        for (const auto &entry : frequency_table) {
+            file << entry.first << " ";
+            for (auto it = entry.second.begin(); it != entry.second.end(); ++it) {
+            file << it->first << " " << it->second;
+            if (next(it) != entry.second.end()) {
+                file << " ";
+            }
+            }
+            file << "\n";
+        }
+        file.close();
+    };
 };
 
 string read_file(const string &filename) {
@@ -128,6 +148,7 @@ void save_frequencyTable(const unordered_map<string, unordered_map<char, int>> &
 }
 
 
+
 int main(int argc, char *argv[]) {
     if (argc != 6) {
         cerr << "Usage: " << argv[0] << " <input_file> -k <order> -a <alpha>\n";
@@ -143,7 +164,7 @@ int main(int argc, char *argv[]) {
     FiniteContextModel fcm(k, alpha);
     fcm.train(text);
     print_frequencyTable(fcm.frequency_table);
-    save_frequencyTable(fcm.frequency_table);
+    fcm.save_model("model.txt");
     double entropy = fcm.compute_entropy(text);
     
     cout << "Average Information Content: " << entropy << " bps" << endl;
