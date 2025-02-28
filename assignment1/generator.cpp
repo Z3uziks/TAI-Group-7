@@ -26,10 +26,16 @@ private:
         file >> k >> alpha;
         file.ignore(); // Ignore newline after reading k and alpha
         string context;
-        char c1, c2;
-        while (file.get(c1) && file.get(c2)) {
+        char ch;
+        while (file.peek() != EOF) {
+            context = "";
+            for (int i = 0; i < k; i++)
+            {
+                file.get(ch);
+                context = string(context) + string(1, ch);
+            }
             file.get(); // Ignore space
-            context = string(1, c1) + string(1, c2);
+            
             cout << "Context: " << context << endl;
             char symbol;
             // file.get(symbol);
