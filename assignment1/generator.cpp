@@ -7,14 +7,14 @@
 
 using namespace std;
 
-class FiniteContextModel {
+class Generator {
 private:
     int k;
     double alpha;
     unordered_map<string, int> context_counts;
     
     public:
-    FiniteContextModel(int order, double smoothing) : k(order), alpha(smoothing) {}
+    Generator(int order, double smoothing) : k(order), alpha(smoothing) {}
     unordered_map<string, unordered_map<char, int>> frequency_table;
 
     void load_model(const string &filename) {
@@ -111,12 +111,12 @@ int main(int argc, char *argv[]) {
         cerr << "Usage: " << argv[0] << " <model_file> -p <prior> -s <length>\n";
         return 1;
     }
-    
+        
     string model_file = argv[1];
     string prior = argv[3];
     int sequence_length = stoi(argv[5]);
     
-    FiniteContextModel fcm(0, 0.0);
+    Generator fcm(0, 0.0);
     fcm.load_model(model_file);
     print_frequencyTable(fcm.frequency_table);
     
