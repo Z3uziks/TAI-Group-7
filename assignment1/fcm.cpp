@@ -36,7 +36,7 @@ private:
             frequency_table[context][next_symbol]++;
             context_counts[context]++;
         }
-        cout << "Size: " << frequency_table.size() << endl;
+        // cout << "Size: " << frequency_table.size() << endl;
     }
 
     double probability(const string &context, char symbol, const int sigma) {
@@ -47,7 +47,7 @@ private:
     }
     
     
-    double compute_entropy(const string &text) {
+    double compute_aic(const string &text) {
         double entropy = 0.0;
         const int sigma = getSigma(text);
         for (size_t i = 0; i + k < text.size(); ++i) {
@@ -56,9 +56,24 @@ private:
             double prob = probability(context, next_symbol, sigma);
             entropy += log2(prob);
         }
-        cout << "Entropy: " << entropy << endl;
-        cout << "Text size: " << text.size() << endl;
+        //
         return -entropy / (text.size() - k);
+    }
+
+    double compute_entropy(const string &text) {
+        double entropy = 0.0;
+        unordered_map<char, int> symbol_counts;
+        
+        for (char c : text) {
+            symbol_counts[c]++;
+        }
+
+        for (const auto &entry : symbol_counts) {
+            double prob = static_cast<double>(entry.second) / text.size();
+            entropy += prob * log2(prob);
+        }
+
+        return -entropy;
     }
 
     void save_model(const string &filename) {
@@ -163,10 +178,15 @@ int main(int argc, char *argv[]) {
 
     FiniteContextModel fcm(k, alpha);
     fcm.train(text);
-    print_frequencyTable(fcm.frequency_table);
+    // print_frequencyTable(fcm.frequency_table);
     fcm.save_model("model.txt");
+    double avg_info_content = fcm.compute_aic(text);
     double entropy = fcm.compute_entropy(text);
+
     
-    cout << "Average Information Content: " << entropy << " bps" << endl;
+    
+    
+    cout << "Entropy: " << entropy << " bps" << endl;
+    cout << "Average Information Content: " << avg_info_content << " bps" << endl;
     return 0;
 }
