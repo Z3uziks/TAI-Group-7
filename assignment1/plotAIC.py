@@ -1,6 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
+# Create directory if it doesn't exist
+os.makedirs("graphics/plots_aic", exist_ok=True)
 
 def plot_AIC():
     # Load data
@@ -28,7 +32,7 @@ def plot_AIC():
         plt.grid(True)
         
         # Save and show plot
-        plt.savefig(f"aic_plot_{file}.png")
+        plt.savefig(f"graphics/plots_aic/aic_plot_{file}.png")
         plt.show()
 
 if __name__ == "__main__":
