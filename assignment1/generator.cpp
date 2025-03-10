@@ -9,11 +9,11 @@ using namespace std;
 
 class Generator {
 private:
+unordered_map<string, int> context_counts;
+
+public:
     int k;
     double alpha;
-    unordered_map<string, int> context_counts;
-    
-    public:
     Generator(int order, double smoothing) : k(order), alpha(smoothing) {}
     unordered_map<string, unordered_map<char, int>> frequency_table;
 
@@ -36,18 +36,14 @@ private:
             }
             file.get(); // Ignore space
             
-            // cout << "Context: " << context << endl;
             char symbol;
             // file.get(symbol);
-            // cout << "Symbol: " << symbol << endl; 
             int count;
             while (file.get(symbol) && file >> count) {
                 frequency_table[context][symbol] = count;
                 context_counts[context] += count;
-                // cout << symbol << " " << count << endl;
                 if (file.peek() == '\n') {
                     file.ignore(); // Ignore newline
-                    // cout << "Peeked newline" << endl;
                     break;
                 }
                 file.get();
@@ -106,6 +102,37 @@ void print_frequencyTable(const unordered_map<string, unordered_map<char, int>> 
     cout << "}\n";
 }
 
+string getPrior(string prior, Generator fcm) {
+    if (prior.size() > (size_t)fcm.k) {
+        cerr << "Error: Prior length is greater than the model order (k)." << endl;
+        return "";
+    } else if (prior.size() < (size_t)fcm.k) {
+        string best_match;
+        int max_match_length = 0;
+        for (const auto &context : fcm.frequency_table) {
+            int match_length = 0;
+            for (size_t i = 0; i < prior.size(); ++i) {
+                if (context.first[i] == prior[i]) {
+                    ++match_length;
+                } else {
+                    break;
+                }
+            }
+            if (match_length > max_match_length) {
+                max_match_length = match_length;
+                best_match = context.first;
+            }
+        }
+        if (best_match.empty()) {
+            cerr << "Error: No suitable prior found in the model." << endl;
+            return "";
+        }
+        prior = best_match;
+    }
+
+    return prior;
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 6) {
         cerr << "Usage: " << argv[0] << " <model_file> -p <prior> -s <length>\n";
@@ -119,6 +146,11 @@ int main(int argc, char *argv[]) {
     Generator fcm(0, 0.0);
     fcm.load_model(model_file);
     // print_frequencyTable(fcm.frequency_table);
+
+    prior = getPrior(prior, fcm);
+    if (prior.empty()) {
+        return 1;
+    }
     
     string generated_text = fcm.generate_text(prior, sequence_length);
     cout << "Generated Text: " << generated_text << endl;
