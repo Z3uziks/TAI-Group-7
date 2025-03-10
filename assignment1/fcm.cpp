@@ -36,7 +36,6 @@ private:
             frequency_table[context][next_symbol]++;
             context_counts[context]++;
         }
-        // cout << "Size: " << frequency_table.size() << endl;
     }
 
     double probability(const string &context, char symbol, const int sigma) {
@@ -178,7 +177,7 @@ int main(int argc, char *argv[]) {
 
     FiniteContextModel fcm(k, alpha);
     fcm.train(text);
-    // print_frequencyTable(fcm.frequency_table);
+    print_frequencyTable(fcm.frequency_table);
     fcm.save_model("model.txt");
     double avg_info_content = fcm.compute_aic(text);
     double entropy = fcm.compute_entropy(text);

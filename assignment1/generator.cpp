@@ -36,7 +36,7 @@ private:
             }
             file.get(); // Ignore space
             
-            cout << "Context: " << context << endl;
+            // cout << "Context: " << context << endl;
             char symbol;
             // file.get(symbol);
             // cout << "Symbol: " << symbol << endl; 
@@ -44,10 +44,10 @@ private:
             while (file.get(symbol) && file >> count) {
                 frequency_table[context][symbol] = count;
                 context_counts[context] += count;
-                cout << symbol << " " << count << endl;
+                // cout << symbol << " " << count << endl;
                 if (file.peek() == '\n') {
                     file.ignore(); // Ignore newline
-                    cout << "Peeked newline" << endl;
+                    // cout << "Peeked newline" << endl;
                     break;
                 }
                 file.get();
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
     
     Generator fcm(0, 0.0);
     fcm.load_model(model_file);
-    print_frequencyTable(fcm.frequency_table);
+    // print_frequencyTable(fcm.frequency_table);
     
     string generated_text = fcm.generate_text(prior, sequence_length);
     cout << "Generated Text: " << generated_text << endl;
