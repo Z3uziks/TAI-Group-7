@@ -168,7 +168,7 @@ do
         echo "$iter,$FILE_NAME,$K,$ALPHA,$PRIOR,$S,$AIC,$ENTROPY" >> aic_results_recursive.csv
         
         # Run generator with the correct prior and sequence length (-s) and save log
-        ./generator model.txt -p "$PRIOR" -s "$S" > "logs/${FILE_NAME}_iteration_${iter}_gen.log"
+        ./generator -p "$PRIOR" -s "$S" > "logs/${FILE_NAME}_iteration_${iter}_gen.log"
         
         # Rename generated output for next iteration
         mv generated_output.txt "sequences_recursive/${FILE_NAME}_sequence_${iter}.txt"
