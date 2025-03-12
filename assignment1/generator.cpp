@@ -134,14 +134,14 @@ string getPrior(string prior, Generator fcm) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc != 6) {
-        cerr << "Usage: " << argv[0] << " <model_file> -p <prior> -s <length>\n";
+    if (argc != 5) {
+        cerr << "Usage: " << argv[0] << " -p <prior> -s <length>\n";
         return 1;
     }
-        
-    string model_file = argv[1];
-    string prior = argv[3];
-    int sequence_length = stoi(argv[5]);
+    
+    string model_file = "model.txt";
+    string prior = argv[2];
+    int sequence_length = stoi(argv[4]);
     
     Generator fcm(0, 0.0);
     fcm.load_model(model_file);
