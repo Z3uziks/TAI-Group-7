@@ -26,8 +26,10 @@ To run the `fcm` program, use the following command:
 
 ### generator
 
-To run the `generator` program, use the following command (having in count that you already run the fcm program):
+To run the `generator` program, use the following command (having in mind that you already ran the `fcm` program):
 
 ```sh
 ./generator -p ABC -s 500
 ```
+
+**Note:** Ensure that the length of the `-p` parameter (prior) is the same or smaller than the `-k` value used to generate the model.
