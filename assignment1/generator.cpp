@@ -106,7 +106,7 @@ string getPrior(string prior, Generator fcm) {
     if (prior.size() > (size_t)fcm.k) {
         cerr << "Error: Prior length is greater than the model order (k)." << endl;
         return "";
-    } else if (prior.size() < (size_t)fcm.k) {
+    } else if ((prior.size() < (size_t)fcm.k) || fcm.frequency_table.find(prior) == fcm.frequency_table.end()) {
         string best_match;
         int max_match_length = 0;
         for (const auto &context : fcm.frequency_table) {
@@ -127,6 +127,8 @@ string getPrior(string prior, Generator fcm) {
             cerr << "Error: No suitable prior found in the model." << endl;
             return "";
         }
+        
+        cout << "Context Available: " << best_match << endl;
         prior = best_match;
     }
 
