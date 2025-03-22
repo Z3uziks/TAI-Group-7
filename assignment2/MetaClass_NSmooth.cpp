@@ -67,7 +67,7 @@ public:
         
         // NRC formula: C(x||y) / (|x| * log2(A))
         // For DNA, log2(A) = log2(4) = 2
-        double nrc = bits / (2.0 * (sequence.length()-k));
+        double nrc = bits / (2.0 * sequence.length());
         
         return nrc;
     }
