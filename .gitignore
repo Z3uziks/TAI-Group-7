@@ -36,8 +36,8 @@
 */.vscode
 
 # Venv
-/.venv
-*/.venv
+/venv
+*/venv
 
 # Generated files
 assignment1/frequency_table.txt
