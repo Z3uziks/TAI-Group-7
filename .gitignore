@@ -33,6 +33,11 @@
 
 # VS Code Stuff
 /.vscode
+*/.vscode
+
+# Venv
+/.venv
+*/.venv
 
 # Generated files
 assignment1/frequency_table.txt
