@@ -19,7 +19,7 @@ OBJ_SIMPLE = $(SRC_SIMPLE:.cpp=.o)
 OBJ_NSMOOTH = $(SRC_NSMOOTH:.cpp=.o)
 
 # Main target (builds all implementations)
-all: $(TARGET) $(TARGET_SIMPLE) $(TARGET_NSMOOTH)
+all: $(TARGET) $(TARGET_SIMPLE) $(TARGET_NSMOOTH) %.clean
 
 # Specific implementation targets
 standard: $(TARGET)
@@ -41,6 +41,10 @@ $(TARGET_NSMOOTH): $(OBJ_NSMOOTH)
 # Compile source files
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+# Remove .o files
+%.clean:
+	rm -f $(OBJ_STANDARD) $(OBJ_SIMPLE) $(OBJ_NSMOOTH)
 
 # Clean up
 clean:
