@@ -15,7 +15,6 @@ struct OrganismMatch {
     
     OrganismMatch(const std::string& n, double v) : name(n), nrc(v) {}
     
-    // Comparison operator for sorting
     bool operator<(const OrganismMatch& other) const {
         return nrc < other.nrc;
     }
@@ -32,13 +31,12 @@ private:
     std::unordered_map<std::string, std::unordered_map<char, int>> counts;
 
 public:
-    // Constructor
+    
     MarkovModel(int context_size, double smoothing_param) : 
         k(context_size), 
         alpha(smoothing_param), 
         alphabet_size(4) {}
     
-    // Train the model on a given sequence
     void train(const std::string& sequence) {
         for (size_t i = 0; i < sequence.length() - k; ++i) {
             std::string context = sequence.substr(i, k);
@@ -72,7 +70,6 @@ public:
                 // Apply Laplace smoothing
                 double prob = (symbol_count + alpha) / (total_count + alpha * alphabet_size);
                 
-                // Calculate bits: -log2(probability)
                 double bits = -std::log2(prob);
                 total_bits += bits;
             } else {
@@ -86,7 +83,6 @@ public:
         return total_bits;
     }
     
-    // Calculate Normalized Relative Compression (NRC)
     double calculate_nrc(const std::string& sequence) {
         if (sequence.length() <= static_cast<std::string::size_type>(k)) {
             return 1.0;
@@ -102,7 +98,20 @@ public:
     }
 };
 
-// Function to read metagenomic sample from file
+// trim leading/trailing whitespace
+inline std::string trim(const std::string& s) {
+    auto start = s.begin();
+    while (start != s.end() && std::isspace(*start)) start++;
+
+    auto end = s.end();
+    do {
+        --end;
+    } while (std::distance(start, end) > 0 && std::isspace(*end));
+
+    return std::string(start, end + 1);
+}
+
+
 std::string read_metagenomic_sample(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -122,7 +131,6 @@ std::string read_metagenomic_sample(const std::string& filename) {
     return sample;
 }
 
-// Function to read reference database from file
 std::vector<std::pair<std::string, std::string>> read_reference_database(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -136,15 +144,14 @@ std::vector<std::pair<std::string, std::string>> read_reference_database(const s
     std::string line;
     
     while (std::getline(file, line)) {
-        line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
-        
+
+        line = trim(line);
         if (!line.empty()) {
             if (line[0] == '@') {
                 if (!current_name.empty()) {
                     references.push_back(std::make_pair(current_name, current_sequence));
                 }
                 
-                // Start a new organism
                 current_name = line.substr(1);  // Remove the '@' prefix
                 current_sequence.clear();
             } else {
@@ -180,7 +187,6 @@ std::vector<OrganismMatch> calculate_nrc_parallel(const std::vector<std::pair<st
     return results;
 }
 
-// Function to save results to CSV
 void save_results_to_csv(const std::vector<OrganismMatch>& results, int top) {
     std::ofstream outFile("results.csv");
     if (!outFile.is_open()) {
@@ -197,7 +203,6 @@ void save_results_to_csv(const std::vector<OrganismMatch>& results, int top) {
     std::cout << "Results saved to results.csv" << std::endl;
 }
 
-// Function to display help message
 void display_help() {
     std::cout << "MetaClass: Metagenome classification using NRC\n\n";
     std::cout << "Usage: MetaClass -d <database> -s <sample> [-k <context>] [-a <alpha>] [-t <top>]\n\n";
@@ -210,7 +215,6 @@ void display_help() {
     std::cout << "  -h        Display this help message\n";
 }
 
-// Main function
 int main(int argc, char* argv[]) {
     std::string db_file;
     std::string sample_file;
@@ -218,7 +222,6 @@ int main(int argc, char* argv[]) {
     double alpha = 0.1;
     int top = 20;
     
-    // Parse command line arguments
     for (int i = 1; i < argc; i++) {
         std::string arg = argv[i];
         
@@ -242,7 +245,6 @@ int main(int argc, char* argv[]) {
         }
     }
     
-    // Check required arguments
     if (db_file.empty() || sample_file.empty()) {
         std::cerr << "Error: Database and sample files are required.\n";
         display_help();
@@ -271,11 +273,9 @@ int main(int argc, char* argv[]) {
     std::chrono::duration<double> elapsed = end - start;
     std::cout << "Multi-threaded execution time: " << elapsed.count() << " seconds.\n";
 
-    
-    // Sort by NRC value (lower is better - indicates more compression)
+    // Sort by NRC value (lower is better - indicates more similar)
     std::sort(results.begin(), results.end());
     
-    // Print the top matches
     std::cout << "\nTop " << top << " matches:" << std::endl;
     std::cout << "----------------------------------------------------------" << std::endl;
     std::cout << "Rank  NRC        Organism" << std::endl;
@@ -286,7 +286,6 @@ int main(int argc, char* argv[]) {
         printf("%-5d %-10.4f %s\n", i+1, results[i].nrc, results[i].name.c_str());
     }
 
-    // Save to CSV
     save_results_to_csv(results, top);
     
     return 0;

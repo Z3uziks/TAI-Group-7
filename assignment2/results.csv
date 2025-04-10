@@ -1,21 +1,21 @@
 Rank,NRC,Organism
-1,0.147736,gi|14141972|ref|NC_002786.1|MaizerayadofinovirusisolateCostaRican,completegenome
-2,0.147901,gi|971748077|ref|NC_028836.1|PseudomonasphageDL62,completegenome
-3,0.151406,gi|84662653|ref|NC_007710.1|XanthomonasoryzaephageOP2DNA,completegenome
-4,0.163794,gi|9629255|ref|NC_001793.1|Oatbluedwarfviruscompletegenome
-5,0.166111,gi|472339725|ref|NC_020840.1|TetraselmisviridisvirusS20genomicsequence
-6,0.16622,gi|475994049|ref|NC_020902.1|EquinePegivirus1isolateC0035,completegenome
-7,0.167921,gi|927594140|ref|NC_027867.1|MollivirussibericumisolateP1084-T,completegenome
-8,0.169032,gi|971752197|ref|NC_028885.1|PseudomonasphageDL64,completegenome
-9,0.17492,gi|50253405|ref|NC_005997.1|StCroixrivervirussegment1putativeRNA-dependentRNApolymeraseVP1gene,completecds
-10,0.176669,gi|22855189|ref|NC_004168.1|YellowtailascitesvirussegmentA,completesequence
-11,0.178167,gi|971761894|ref|NC_028971.1|PseudomonasphageDL68,completegenome
-12,0.178785,gi|113478394|ref|NC_008311.1|NorovirusGV,completegenome
-13,0.179291,gi|33867953|ref|NC_005075.1|HelicobasidiummompaNo.17dsRNAvirussmallsegment,completesequence
-14,0.179336,gi|971755563|ref|NC_028919.1|PseudomonasphageDL54,completegenome
-15,0.181464,gi|971482220|ref|NC_028745.1|PseudomonasphageDL60,completegenome
-16,0.181501,gi|1006610892|ref|NC_029645.1|NorovirusGIII,completegenome
-17,0.181836,gi|33867950|ref|NC_005074.1|HelicobasidiummompaNo.17dsRNAviruslargesegment,completesequence
-18,0.187963,gi|9635461|ref|NC_002361.1|Columbidcircovirus(CoCV),completegenome
-19,0.18838,gi|9626096|ref|NC_001362.1|Friendmurineleukemiavirus,completegenome
-20,0.189135,gi|937424728|ref|NC_027918.1|Kobuviruscattle/Kagoshima-2-24-KoV/2015/JPNgenomicRNA,completegenome,strain:Kagoshima-2-24-KoV/2015/JPN
+1,0.224832,NC_001348.1 Human herpesvirus 3, complete genome
+2,0.266395,NC_005831.2 Human Coronavirus NL63, complete genome
+3,0.268241,Super ISS Si1240
+4,0.332785,OR353425.1 Octopus vulgaris mitochondrion, complete genome
+5,0.367041,Super MUL 720
+6,0.607551,gi|49169782|ref|NC_005831.2| Human Coronavirus NL63, complete genome
+7,1.23392,gi|9629255|ref|NC_001793.1| Oat blue dwarf virus complete genome
+8,1.23544,gi|971748077|ref|NC_028836.1| Pseudomonas phage DL62, complete genome
+9,1.23586,gi|14141972|ref|NC_002786.1| Maize rayado fino virus isolate Costa Rican, complete genome
+10,1.24198,gi|84662653|ref|NC_007710.1| Xanthomonas oryzae phage OP2 DNA, complete genome
+11,1.25255,gi|472339725|ref|NC_020840.1| Tetraselmis viridis virus S20 genomic sequence
+12,1.25401,gi|22855189|ref|NC_004168.1| Yellowtail ascites virus segment A, complete sequence
+13,1.25433,gi|971752197|ref|NC_028885.1| Pseudomonas phage DL64, complete genome
+14,1.2569,gi|927594140|ref|NC_027867.1| Mollivirus sibericum isolate P1084-T, complete genome
+15,1.2573,gi|475994049|ref|NC_020902.1| Equine Pegivirus 1 isolate C0035, complete genome
+16,1.25785,gi|33867953|ref|NC_005075.1| Helicobasidium mompa No.17 dsRNA virus small segment, complete sequence
+17,1.25835,gi|21427658|ref|NC_004018.1| Gremmeniella abietina RNA virus MS1 RNA 1, complete genome
+18,1.26215,gi|113478394|ref|NC_008311.1| Norovirus GV, complete genome
+19,1.26289,gi|98960854|ref|NC_008041.1| Redspotted grouper nervous necrosis virus RNA 2, complete sequence
+20,1.26369,gi|33867950|ref|NC_005074.1| Helicobasidium mompa No.17 dsRNA virus large segment, complete sequence
