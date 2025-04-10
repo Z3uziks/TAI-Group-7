@@ -18,24 +18,10 @@ To compile all implementations at once, simply run:
 make
 ```
 
-This will build all three executables: `MetaClass`, `MetaClass_Simple`, and `MetaClass_NSmooth`.
-
-To build specific implementations individually:
-
-```bash
-make standard    # Builds the standard implementation (MetaClass.cpp)
-make simple      # Builds the simple implementation (MetaClass_C.cpp)
-make nsmooth     # Builds the alternative smoothing implementation (MetaClass_NSmooth.cpp)
-```
+This will build all `MetaClass` executable.
 
 ## Running the Program
 
-### Basic Usage
-
-```bash
-./MetaClass -d db.txt -s meta.txt -k 10 -a 0.1 -t 20
-```
-**Note:** MetaClass_C doesn't have -a parameter (also for the MetaClass_NSmooth its not needed)
 ### Command Line Options
 
 - `-d <file>`: Path to the reference database file (required)
@@ -48,7 +34,7 @@ make nsmooth     # Builds the alternative smoothing implementation (MetaClass_NS
 ### Example
 
 ```bash
-./MetaClass -d db.txt -s meta.txt -k 8 -a 0.01 -t 10
+./MetaClass -d db.txt -s meta.txt -k 8 -a 0.01 -t 20
 ```
 
 This runs MetaClass with:
@@ -56,25 +42,7 @@ This runs MetaClass with:
 - `meta.txt` as the metagenomic sample
 - Context size of 8
 - Smoothing parameter of 0.01
-- Displaying the top 10 matches
-
-## Available Implementations
-
-The project includes three different implementations:
-
-1. **Standard Implementation** (`MetaClass.cpp`): 
-   - Full-featured implementation with multi-threading support
-   - Detailed Markov model with proper Laplace smoothing
-   - CSV output and detailed logging
-
-2. **Simple Implementation** (`MetaClass_C.cpp`):
-   - Simplified implementation with core functionality
-   - Smaller codebase for easier understanding
-   - Basic command-line interface
-
-3. **Alternative Smoothing** (`MetaClass_NSmooth.cpp`):
-   - Similar to the standard implementation but with an alternative compression calculation
-   - Uses a different approach to context-based compression estimation
+- Displaying the top 20 matches
 
 ## How It Works
 
