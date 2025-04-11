@@ -25,12 +25,11 @@ def shorten_name(name, max_length=20):
     name = str(name)
     return name if len(name) <= max_length else name[:max_length] + "..."
 
-# Read the results.csv file manually
 with open('results.csv') as f:
     lines = f.readlines()
 
 data = []
-for line in lines[1:]:  # skip header
+for line in lines[1:]: 
     parts = line.strip().split(',', 2)
     if len(parts) == 3:
         rank, nrc, organism = parts
@@ -39,18 +38,14 @@ for line in lines[1:]:  # skip header
 results = pd.DataFrame(data)
 print(results['NRC'])
 
-# Create a new column with group info
 results['group'] = results['Organism'].apply(get_group)
 
-# Find groups that contain more than one genome
 group_counts = results['group'].value_counts()
 similar_groups = group_counts[group_counts > 1].index.tolist()
 
-# Create output directory for group heatmaps
 output_dir = 'plots/similarity_heatmaps'
 os.makedirs(output_dir, exist_ok=True)
 
-# For each group, compute pairwise NRC differences and plot heatmap
 for grp in similar_groups:
     grp_data = results[results['group'] == grp].reset_index(drop=True)
     n = len(grp_data)
@@ -61,7 +56,6 @@ for grp in similar_groups:
         for j in range(n):
             matrix[i, j] = abs(grp_data.loc[i, 'NRC'] - grp_data.loc[j, 'NRC'])
     
-    # Use shortened names for the heatmap axes
     short_names = grp_data['Organism'].apply(lambda n: shorten_name(n, max_length=20))
     df_matrix = pd.DataFrame(matrix, index=short_names, columns=short_names)
     

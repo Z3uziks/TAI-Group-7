@@ -1,0 +1,8 @@
+,"NC_001348.1 Human herpesvirus 3, complete genome","NC_005831.2 Human Coronavirus NL63, complete genome",Super ISS Si1240,"OR353425.1 Octopus vulgaris mitochondrion, complete genome",Super MUL 720,"gi|49169782|ref|NC_005831.2| Human Coronavirus NL63, complete genome","gi|14141972|ref|NC_002786.1| Maize rayado fino virus isolate Costa Rican, complete genome"
+"NC_001348.1 Human herpesvirus 3, complete genome",1.0,0.0,0.0,0.0,0.0,0.0,0.0
+"NC_005831.2 Human Coronavirus NL63, complete genome",0.0,1.0,0.0,0.0,0.0,0.588627,0.0
+Super ISS Si1240,0.0,0.0,1.0,0.0,0.010079999999999978,0.0,0.0
+"OR353425.1 Octopus vulgaris mitochondrion, complete genome",0.0,0.0,0.0,1.0,0.0,0.0,0.0
+Super MUL 720,0.0,0.0,0.0,0.0,1.0,0.0,0.0
+"gi|49169782|ref|NC_005831.2| Human Coronavirus NL63, complete genome",0.0,0.5973919999999999,0.0,0.0,0.0,1.0,0.0
+"gi|14141972|ref|NC_002786.1| Maize rayado fino virus isolate Costa Rican, complete genome",0.0,0.0,0.0,0.0,0.0002870000000000372,0.0,1.0

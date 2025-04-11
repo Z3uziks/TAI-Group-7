@@ -1,21 +1,21 @@
 Rank,NRC,Organism
-1,0.13017,NC_001348.1 Human herpesvirus 3, complete genome
-2,0.139364,NC_005831.2 Human Coronavirus NL63, complete genome
-3,0.152484,OR353425.1 Octopus vulgaris mitochondrion, complete genome
-4,0.196657,Super ISS Si1240
-5,0.277197,Super MUL 720
-6,0.450495,gi|49169782|ref|NC_005831.2| Human Coronavirus NL63, complete genome
-7,0.998025,gi|20806045|ref|NC_003847.1| Panicum mosaic satellite virus, complete genome
-8,1.00021,gi|561142803|ref|NC_022962.1| Olive viral satellite RNA isolate Caltabellotta1 from Italy, complete genome
-9,1.00109,gi|21427662|ref|NC_004020.1| Gremmeniella abietina RNA virus MS1 RNA 3, complete genome
-10,1.00389,gi|1003725912|ref|NC_029632.1| Lake Sarah-associated circular molecule 9 isolate LSaCM-9-LSLA-2013, complete sequence
-11,1.00608,gi|98960854|ref|NC_008041.1| Redspotted grouper nervous necrosis virus RNA 2, complete sequence
-12,1.00623,gi|985760975|ref|NC_029112.1| Ctenophore-associated circular genome 1, complete genome
-13,1.00697,gi|1003725940|ref|NC_029635.1| Lake Sarah-associated circular virus-46 isolate LSaCV-46-LSSO-2013, complete sequence
-14,1.00708,gi|20428600|ref|NC_003752.1| Rice ragged stunt virus segment S6 P6 gene, complete cds
-15,1.00768,gi|73852952|ref|NC_007360.1| Influenza A virus (A/Goose/Guangdong/1/96(H5N1)) nucleocapsid protein (NP) gene, complete cds
-16,1.00806,gi|21427660|ref|NC_004019.1| Gremmeniella abietina RNA virus MS1 RNA 2, complete genome
-17,1.0085,gi|20889313|ref|NC_003871.1| Carrot red leaf luteovirus associated RNA clone a25 putative RNA dependent RNA polymerase, complete cds
-18,1.00853,gi|50253405|ref|NC_005997.1| St Croix river virus segment 1 putative RNA-dependent RNA polymerase VP1 gene, complete cds
-19,1.00856,gi|33867953|ref|NC_005075.1| Helicobasidium mompa No.17 dsRNA virus small segment, complete sequence
-20,1.00897,gi|1003725989|ref|NC_029640.1| Lake Sarah-associated circular molecule 11 isolate LSaCM-11-LSWA-2013, complete sequence
+1,0.196636,NC_001348.1 Human herpesvirus 3, complete genome
+2,0.241053,NC_005831.2 Human Coronavirus NL63, complete genome
+3,0.262869,Super ISS Si1240
+4,0.310705,OR353425.1 Octopus vulgaris mitochondrion, complete genome
+5,0.39734,Super MUL 720
+6,0.735003,gi|49169782|ref|NC_005831.2| Human Coronavirus NL63, complete genome
+7,1.50765,gi|14141972|ref|NC_002786.1| Maize rayado fino virus isolate Costa Rican, complete genome
+8,1.5108,gi|971748077|ref|NC_028836.1| Pseudomonas phage DL62, complete genome
+9,1.51754,gi|9629255|ref|NC_001793.1| Oat blue dwarf virus complete genome
+10,1.52236,gi|84662653|ref|NC_007710.1| Xanthomonas oryzae phage OP2 DNA, complete genome
+11,1.54726,gi|472339725|ref|NC_020840.1| Tetraselmis viridis virus S20 genomic sequence
+12,1.55554,gi|475994049|ref|NC_020902.1| Equine Pegivirus 1 isolate C0035, complete genome
+13,1.55569,gi|927594140|ref|NC_027867.1| Mollivirus sibericum isolate P1084-T, complete genome
+14,1.55635,gi|971752197|ref|NC_028885.1| Pseudomonas phage DL64, complete genome
+15,1.55976,gi|22855189|ref|NC_004168.1| Yellowtail ascites virus segment A, complete sequence
+16,1.56039,gi|33867953|ref|NC_005075.1| Helicobasidium mompa No.17 dsRNA virus small segment, complete sequence
+17,1.56778,gi|113478394|ref|NC_008311.1| Norovirus GV, complete genome
+18,1.57377,gi|50253405|ref|NC_005997.1| St Croix river virus segment 1 putative RNA-dependent RNA polymerase VP1 gene, complete cds
+19,1.57499,gi|21427658|ref|NC_004018.1| Gremmeniella abietina RNA virus MS1 RNA 1, complete genome
+20,1.57704,gi|33867950|ref|NC_005074.1| Helicobasidium mompa No.17 dsRNA virus large segment, complete sequence
