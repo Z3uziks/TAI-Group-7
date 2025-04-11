@@ -5,7 +5,7 @@ import numpy as np
 import re
 
 # Define parameter ranges
-k_values = [4, 6, 8, 10, 12]
+k_values = [4, 6, 8, 10, 12, 14]
 a_values = [0.001, 0.01, 0.05, 0.1, 0.2]
 
 # Output file for heatmap matrix
