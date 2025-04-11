@@ -7,8 +7,14 @@ MetaClass is a tool for analyzing metagenomic samples using Normalized Relative 
 ### Prerequisites
 
 Make sure you have the following installed on your Linux system:
-- C++ compiler with C++11 support (g++ recommended)
-- GNU Make
+- Python 3.x
+- `pip` (Python package installer)
+
+To install the required Python dependencies, run:
+
+```bash
+pip install -r requirements.txt
+```
 
 ### Compilation
 
