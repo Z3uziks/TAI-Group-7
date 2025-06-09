@@ -12,5 +12,5 @@ SET(BASE_DIR ${CMAKE_SOURCE_DIR} )
 SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BASE_DIR}/../bin)
 
 add_executable(GetMaxFreqs GetMaxFreqs.cpp)
-target_link_libraries(GetMaxFreqs -lsndfile -lFLAC -lvorbisfile -lvorbis -logg -lvorbisenc -lfftw3 -lm -static)
+target_link_libraries(GetMaxFreqs -lsndfile -lFLAC -lvorbisfile -lvorbis -logg -lvorbisenc -lfftw3 -lm -lopus -static)
 

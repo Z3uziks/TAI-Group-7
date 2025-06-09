@@ -51,3 +51,9 @@ assignment2/MetaClass
 assignment2/MetaClass_C
 assignment2/MetaClass_NSmooth
 assignment2/runs/
+assignment3/GetMaxFreqs/src/build.linux/*
+assignment3/GetMaxFreqs/src/build.windows/*
+assignment3/src/__pycache__
+assignment3/signatures/queries/*
+# Generated samples & the ones given by professor
+assignment3/queries/*
