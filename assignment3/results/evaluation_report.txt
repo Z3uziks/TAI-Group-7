@@ -1,0 +1,52 @@
+MUSIC IDENTIFICATION EVALUATION REPORT
+==================================================
+
+BASIC STATISTICS:
+Total queries tested: 1312
+Unique queries: 82
+Compressors tested: gzip, bzip2, lzma, zstd
+
+ACCURACY RESULTS:
+Overall accuracy: 0.716
+Accuracy by compressor:
+  bzip2     : 0.927
+  gzip      : 0.817
+  lzma      : 0.265
+  zstd      : 0.854
+Top-1 accuracy: 0.716
+Top-3 accuracy: 0.897
+Top-5 accuracy: 0.917
+
+NCD STATISTICS:
+Mean NCD: 0.9800 ± 0.0158
+NCD range: [0.9153, 1.0000]
+Mean NCD by compressor:
+  gzip      : 0.9907 ± 0.0101
+  bzip2     : 0.9824 ± 0.0116
+  lzma      : 0.9599 ± 0.0095
+  zstd      : 0.9870 ± 0.0101
+
+PERFORMANCE STATISTICS:
+Mean processing time: 0.414s
+Processing time by compressor:
+  bzip2     : 0.401s
+  gzip      : 0.313s
+  lzma      : 0.763s
+  zstd      : 0.179s
+
+DETAILED COMPRESSOR ANALYSIS:
+            ncd_value_mean  ncd_value_std  ncd_value_min  ncd_value_max  processing_time_mean  processing_time_std  correct_mean
+compressor                                                                                                                      
+bzip2               0.9824         0.0116         0.9376         1.0000                0.4015               0.1539        0.9268
+gzip                0.9907         0.0101         0.9536         1.0000                0.3126               0.1616        0.8171
+lzma                0.9599         0.0095         0.9153         0.9791                0.7633               0.1662        0.2652
+zstd                0.9870         0.0101         0.9511         1.0000                0.1789               0.1180        0.8537
+
+NOISE ROBUSTNESS ANALYSIS:
+                       ncd_value         correct processing_time
+                            mean     std    mean            mean
+noise_level compressor                                          
+0.0         bzip2         0.9824  0.0116  0.9268          0.4015
+            gzip          0.9907  0.0101  0.8171          0.3126
+            lzma          0.9599  0.0095  0.2652          0.7633
+            zstd          0.9870  0.0101  0.8537          0.1789

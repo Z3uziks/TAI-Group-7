@@ -292,3 +292,6 @@ def main():
     
     # Generate and save performance plots
     evaluator.plot_performance_comparison(plots_dir)
+
+if __name__ == "__main__":
+    main()
