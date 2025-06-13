@@ -90,6 +90,22 @@ def plot_results(df: pd.DataFrame, output_dir: str):
         plt.savefig(output_path / 'correlation_matrix.png', dpi=300, bbox_inches='tight')
         plt.close()
     
+    
+    # 5. Accuracy por compressor e noise level (grouped bar chart)
+    if 'noise_level' in df.columns and 'compressor' in df.columns and 'correct' in df.columns:
+        plt.figure(figsize=(10, 6))
+        acc_matrix = df.groupby(['compressor', 'noise_level'])['correct'].mean().unstack()
+        acc_matrix = acc_matrix[sorted(acc_matrix.columns)]  # Ordena os noise levels
+        ax = acc_matrix.plot(kind='bar', width=0.8)
+        plt.title('Accuracy by Compressor and Noise Level')
+        plt.xlabel('Compressor')
+        plt.ylabel('Accuracy')
+        plt.ylim(0, 1)
+        plt.tight_layout()
+        plt.legend(title='Noise Level', bbox_to_anchor=(0.52, 1), loc='upper left')
+        plt.savefig(output_path / 'accuracy_by_compressor_and_noise.png', dpi=300, bbox_inches='tight')
+        plt.close()
+    
     print(f"Plots saved to {output_path}")
 
 
