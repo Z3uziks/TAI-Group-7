@@ -2,51 +2,51 @@ MUSIC IDENTIFICATION EVALUATION REPORT
 ==================================================
 
 BASIC STATISTICS:
-Total queries tested: 1312
-Unique queries: 82
+Total queries tested: 1264
+Unique queries: 79
 Compressors tested: gzip, bzip2, lzma, zstd
 
 ACCURACY RESULTS:
-Overall accuracy: 0.716
+Overall accuracy: 0.719
 Accuracy by compressor:
-  bzip2     : 0.927
-  gzip      : 0.817
-  lzma      : 0.265
-  zstd      : 0.854
-Top-1 accuracy: 0.716
-Top-3 accuracy: 0.897
-Top-5 accuracy: 0.917
+  bzip2     : 0.953
+  gzip      : 0.810
+  lzma      : 0.196
+  zstd      : 0.918
+Top-1 accuracy: 0.719
+Top-3 accuracy: 0.908
+Top-5 accuracy: 0.926
 
 NCD STATISTICS:
-Mean NCD: 0.9800 ± 0.0158
-NCD range: [0.9153, 1.0000]
+Mean NCD: 0.9801 ± 0.0157
+NCD range: [0.9232, 1.0000]
 Mean NCD by compressor:
-  gzip      : 0.9907 ± 0.0101
-  bzip2     : 0.9824 ± 0.0116
-  lzma      : 0.9599 ± 0.0095
-  zstd      : 0.9870 ± 0.0101
+  gzip      : 0.9913 ± 0.0097
+  bzip2     : 0.9821 ± 0.0119
+  lzma      : 0.9601 ± 0.0092
+  zstd      : 0.9870 ± 0.0094
 
 PERFORMANCE STATISTICS:
-Mean processing time: 0.414s
+Mean processing time: 0.323s
 Processing time by compressor:
-  bzip2     : 0.401s
-  gzip      : 0.313s
-  lzma      : 0.763s
-  zstd      : 0.179s
+  bzip2     : 0.291s
+  gzip      : 0.201s
+  lzma      : 0.711s
+  zstd      : 0.090s
 
 DETAILED COMPRESSOR ANALYSIS:
             ncd_value_mean  ncd_value_std  ncd_value_min  ncd_value_max  processing_time_mean  processing_time_std  correct_mean
 compressor                                                                                                                      
-bzip2               0.9824         0.0116         0.9376         1.0000                0.4015               0.1539        0.9268
-gzip                0.9907         0.0101         0.9536         1.0000                0.3126               0.1616        0.8171
-lzma                0.9599         0.0095         0.9153         0.9791                0.7633               0.1662        0.2652
-zstd                0.9870         0.0101         0.9511         1.0000                0.1789               0.1180        0.8537
+bzip2               0.9821         0.0119         0.9317         1.0000                0.2907               0.0414        0.9525
+gzip                0.9913         0.0097         0.9412         1.0000                0.2008               0.0502        0.8101
+lzma                0.9601         0.0092         0.9232         0.9791                0.7112               0.1167        0.1962
+zstd                0.9870         0.0094         0.9364         1.0000                0.0904               0.0306        0.9177
 
 NOISE ROBUSTNESS ANALYSIS:
                        ncd_value         correct processing_time
                             mean     std    mean            mean
 noise_level compressor                                          
-0.0         bzip2         0.9824  0.0116  0.9268          0.4015
-            gzip          0.9907  0.0101  0.8171          0.3126
-            lzma          0.9599  0.0095  0.2652          0.7633
-            zstd          0.9870  0.0101  0.8537          0.1789
+0.0         bzip2         0.9821  0.0119  0.9525          0.2907
+            gzip          0.9913  0.0097  0.8101          0.2008
+            lzma          0.9601  0.0092  0.1962          0.7112
+            zstd          0.9870  0.0094  0.9177          0.0904
