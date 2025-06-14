@@ -103,6 +103,18 @@ def plot_results(df: pd.DataFrame, output_dir: str):
         plt.ylim(0, 1)
         plt.tight_layout()
         plt.legend(title='Noise Level', bbox_to_anchor=(0.52, 1), loc='upper left')
+
+        # Add value labels to each bar
+        for container in ax.containers:
+            for bar in container:
+                height = bar.get_height()
+                if not pd.isna(height):
+                    ax.annotate(f'{height:.2f}',
+                                xy=(bar.get_x() + bar.get_width() / 2, height),
+                                xytext=(0, 1),  # 1 point vertical offset (higher value = further above)
+                                textcoords="offset points",
+                                ha='center', va='bottom', fontsize=8)
+
         plt.savefig(output_path / 'accuracy_by_compressor_and_noise.png', dpi=300, bbox_inches='tight')
         plt.close()
     
